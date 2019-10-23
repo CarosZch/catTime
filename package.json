@@ -1,0 +1,77 @@
+{
+  "name": "catime",
+  "version": "1.0.0",
+  "description": "接收时间戳、Date对象、moment对象，输出多种格式或自定义格式时间字符串",
+  "main": "catime.min.js",
+  "author": "CarusZch",
+  "keywords": [
+    "catime"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "TZ=Pacific/Auckland npm run test-tz && TZ=Europe/London npm run test-tz && TZ=America/Whitehorse npm run test-tz && npm run test-tz && jest",
+    "test-tz": "date && jest test/timezone.test --coverage=false",
+    "babel": "cross-env BABEL_ENV=build babel src --out-dir esm --copy-files && node build/esm",
+    "build": "cross-env BABEL_ENV=build node build && size-limit && gzip-size catime.min.js"
+  },
+  "size-limit": [
+    {
+      "limit": "0.5 KB",
+      "path": "catime.min.js"
+    }
+  ],
+  "jest": {
+    "roots": [
+      "test"
+    ],
+    "testRegex": "test/(.*?/)?.*test.js$",
+    "testURL": "http://localhost",
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*"
+    ]
+  },
+  "release": {
+    "prepare": [
+      {
+        "path": "@semantic-release/changelog"
+      },
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md"
+          ]
+        }
+      ]
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CarosZch/catime.git"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.44",
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/node": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "cross-env": "^5.1.6",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "gzip-size-cli": "^2.1.0",
+    "jest": "^22.4.3",
+    "mockdate": "^2.0.2",
+    "moment": "^2.22.0",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^4.0.0-beta.4",
+    "rollup-plugin-uglify": "^3.0.0",
+    "size-limit": "^0.18.0"
+  },
+  "dependencies": {}
+}
