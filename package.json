@@ -9,9 +9,9 @@
   ],
   "license": "MIT",
   "scripts": {
-    "test": "TZ=Pacific/Auckland npm run test-tz && TZ=Europe/London npm run test-tz && TZ=America/Whitehorse npm run test-tz && npm run test-tz && jest",
-    "test-tz": "date && jest test/timezone.test --coverage=false",
-    "babel": "cross-env BABEL_ENV=build babel src --out-dir esm --copy-files && node build/esm",
+    "test": "npm run test-tz && jest",
+    "test-tz": "date && jest test/catime.test --coverage=false",
+    "babel": "cross-env BABEL_ENV=build babel src --out-dir esm --copy-files",
     "build": "cross-env BABEL_ENV=build node build && size-limit && gzip-size catime.min.js"
   },
   "size-limit": [

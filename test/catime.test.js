@@ -11,5 +11,5 @@ afterEach(() => {
 
 it('Uses spanish locale through constructor', () => { // not recommend
   expect(catime('one', 'two'))
-    .toBe(`60onetwo1}`)
+    .toBe(`60onetwo1`)
 })
