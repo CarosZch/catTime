@@ -1,8 +1,11 @@
-import * as Con from './constant'
+// import * as Con from './constant'
 import Utils from './utils'
 
-function catime(date, format) {
-  return Con.SECONDS_A_MINUTE + date + format + Utils.getTime()
+function catime(date){ //, format) {
+
+  Utils.isDate(date)
+
+  return date
 }
 
 export default catime

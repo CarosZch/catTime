@@ -9,7 +9,7 @@ afterEach(() => {
   MockDate.reset()
 })
 
-it('Uses spanish locale through constructor', () => { // not recommend
-  expect(catime('one', 'two'))
-    .toBe(`60onetwo1`)
+it('catime should return time', () => { // not recommend
+  expect(catime(123, 'two'))
+    .toBe(123)
 })
